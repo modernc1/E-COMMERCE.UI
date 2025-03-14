@@ -16,8 +16,7 @@ Welcome to the **Shoe Store** frontend repository! This project is built using *
 
 - **Frontend:** Angular 19, TypeScript, HTML, SCSS
 - **Backend:** [ASP.NET Core Backend Repository](https://github.com/modernc1/Shoes-Store.API)
-- **State Management:** NgRx (if applicable)
-- **UI Framework:** Angular Material / Bootstrap (if used)
+- **UI Framework:** Angular Material / Bootstrap
 
 ## Getting Started
 
@@ -28,18 +27,6 @@ Ensure you have the following installed:
 - [Node.js](https://nodejs.org/) (LTS version recommended)
 - [Angular CLI](https://angular.io/cli)
 
-### Installation
-
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/your-username/shoe-store-frontend.git
-   cd shoe-store-frontend
-   ```
-2. Install dependencies:
-   ```sh
-   npm install
-   ```
-3. Configure the environment variables (if applicable).
 
 ### Running the Application
 
