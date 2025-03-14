@@ -50,6 +50,23 @@ export class RegisterComponent implements OnDestroy {
     this.model.fullName = this.firstName + ' ' + this.lastName
     const sb1 = this.authService.registerNewUser(this.model).subscribe({
       next: response => {
+        const sb2 = this.authService.loginUser(this.model).subscribe({
+              next: response => {
+                if(response.success){
+                  localStorage.setItem('token', response.token!)
+                  localStorage.setItem('refreshToken', response.refreshToken!)
+                  this.authService.setUser(response)
+                  this.router.navigateByUrl('/home')
+                }
+              },
+              error: (err) => {
+                const errors = err as HttpErrorResponse
+                this.backendError = errors.error?.['message']
+
+              }
+            })
+
+        this.Subscriptions.push(sb2);
         this.router.navigateByUrl('/home')
       },
       error: err => {
