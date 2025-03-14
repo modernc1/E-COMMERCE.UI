@@ -1,0 +1,10 @@
+
+tbody tr{
+  max-height: 100px !important;
+  overflow-y: scroll;
+}
+
+
+table{
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.06);
+}

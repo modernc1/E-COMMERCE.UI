@@ -1,0 +1,58 @@
+<div class="container py-5 d-flex justify-content-center">
+  <div class="card" style="width: 600px;">
+    <div class="card-header text-center pt-3">
+      <h3>Login</h3>
+    </div>
+    <div class="card-body px-5">
+      <ng-container  *ngIf="backendError">
+        <div class="w-100 alert alert-danger">
+          <h6 class="">• {{backendError}}</h6>
+        </div>
+      </ng-container>
+
+      <form #registerForm="ngForm">
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input
+          type="email" class="form-control"
+          aria-describedby="emailHelp"
+          name="email"
+          [(ngModel)]="model.email"
+          #email="ngModel"
+          required
+          email
+          >
+          <app-error-component [controlModel]="email" [customErrors]="{ email: 'Please enter a valid email address.' }"></app-error-component>
+        </div>
+        <div class="input-group mb-3">
+          <label for="password" class="form-label w-100">Password</label>
+          <input [type]="showPassword? 'text' : 'password'" class="form-control"
+          name="password"
+          [(ngModel)]="model.password"
+          #password="ngModel"
+          required
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d!@#$%^&*]{8,}$"
+          style="border-top-left-radius: 6px; border-bottom-left-radius: 6px;">
+          <button type="button" class="btn btn-outline-secondary"
+          (click)="togglePassword()"
+          style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
+            {{ showPassword ? 'Hide' : 'Show' }}
+          </button>
+        </div>
+
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input"
+          name="keepSignedIn"
+          [(ngModel)]="keepSignedIn"
+          >
+          <label class="form-check-label" for="exampleCheck1">Keep Me Signed In</label>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-warning w-100 text-white my-4"
+          (click)="onFormSubmit()"
+          >Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

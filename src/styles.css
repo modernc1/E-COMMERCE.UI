@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap');
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+}
+*{
+  font-family: 'Open Sans', sans-serif;
+}
+
+body{
+  background-color: rgb(243, 243, 243);
+
+}
+
+h1{
+  font-size: 64px;
+  line-height: 64px;
+}
+
+h2{
+  font-size: 45px;
+  color: white;
+}
+
+p{
+  color: grey;
+}
+
+.img-table{
+  max-width: 185px;
+  max-height: 185px;
+}
+
+.section-p1 {
+  padding: 40px 0;
+}
+
+.section-m1 {
+  margin: 40px 0;
+}
+
+body{
+  width: 100%;
+}
+
+

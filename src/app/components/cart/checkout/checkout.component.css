@@ -1,0 +1,54 @@
+.container
+{
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+
+}
+
+#items{
+  grid-column: span 4;
+}
+
+#items div p {
+  font-size: 12px;
+}
+
+#invoices{
+  grid-column: span 2;
+  background-color: rgb(234, 238, 239);
+  height: fit-content;
+}
+
+.card .card-header{
+  background-color: rgb(225, 241, 242);
+}
+
+.invoice-details p{
+  font-size: 12px;
+  padding-top: 3px;
+  margin: 3px;
+}
+
+#proceed {
+  grid-column: span 6;
+}
+@media (min-width: 760px) and (max-width: 1000px){
+  #items{
+    grid-column: span 6;
+  }
+  #invoices {
+    grid-column: span 6;
+  }
+
+}
+
+@media(min-width: 540px) and (max-width: 759px){
+  #items{
+    grid-column: span 6;
+  }
+  #invoices {
+    grid-column: span 6;
+  }
+
+}

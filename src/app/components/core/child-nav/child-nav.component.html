@@ -1,0 +1,48 @@
+  <nav class="navbar bg-dark navbar-expand-sm"
+  data-bs-theme="dark">
+      <!-- <button class="navbar navbar-toggler" data-bs-toggle="collapse"
+      data-bs-target="#navbarMegaMenue" aria-controls="navbarMegaMenue"
+      aria-expanded="false" aria-label="toggle navigation">
+        <span class="navbar-toggler-icon text-white"></span>
+      </button> -->
+      <div class="container-fluid" id="navbarMegaMenue">
+          <ul class="navbar-nav">
+            <li><a href="" class="nav-link px-2 text-white fw-bold dropdown-toggle parallelogram "
+              data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Men</a>
+              <ul class="dropdown-menu mega-menu dropdown-menu-dark">
+                <li><p class="dropdown-header px-3">Categories</p></li>
+                <div class="grid-container" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
+                  <li class="category" *ngFor="let cat of malCategories">
+                    <a class="nav-link nav-link-cat px-4 text-white cat-name" (mouseover)="hoverCategory(cat)" >{{cat.name}}</a>
+                  </li>
+                </div>
+
+              </ul>
+            </li>
+            <div class="nav-divider"></div>
+            <div class="nav-divider"></div>
+            <li><a href="" class="nav-link px-4 text-white fw-bold dropdown-toggle parallelogram"
+              data-bs-toggle="dropdown" aria-expanded="false"
+              >  Women</a>
+              <ul class="dropdown-menu mega-menu dropdown-menu-dark">
+                <div class="row justify-content-start">
+                  <li><p class="dropdown-header px-3 ">Categories</p></li>
+                  <div class="grid-container">
+                    <li class="category" *ngFor="let cat of femaleCategories">
+                      <a class="nav-link nav-link-cat px-4 text-white cat-name" (mouseover)="hoverCategory(cat)" >{{cat.name}}</a></li>
+                  </div>
+                  <!-- <div class="col-md-4">
+                    <li><h4 class="dropdown-header px-3 "></h4></li>
+                    <li>
+                      <div>
+                        <img src="{{ImagePreview}}" style="max-width: 150px;"/>
+                      </div></li>
+                  </div> -->
+                </div>
+              </ul>
+            </li>
+          </ul>
+      </div>
+  </nav>

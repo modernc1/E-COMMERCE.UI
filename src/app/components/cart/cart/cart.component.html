@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="card my-5 p-5">
+    <h3>Shopping Cart</h3>
+    <hr>
+    <ng-container *ngIf="!products">
+      <div class="text-center">
+        <h3>Cart is Empty</h3>
+        <h5>Explore Variety of Products</h5>
+        <button class="btn btn-dark" [routerLink]="['/shoes-list']">Shop Now</button>
+        <hr>
+      </div>
+    </ng-container>
+    <div *ngFor="let item of products; let i = index" class="cart-item-container row align-items-center">
+      <div class="col-3">
+        <img src="{{item.productItem.imagesUrl.at(0)}}" style="max-width: 140px; max-height: 140px;">
+      </div>
+      <div class="col-6">
+        <h5 style="font-size: 16px; font-weight: 600;">{{item.product.name}}</h5>
+        <h6 style="font-size: 14px; font-weight: 400;">{{item.product.category.name}}</h6>
+        <label style="font-size: 13px; font-weight: 600;">Size: {{item.productVariation.sizeOption.name}}</label>
+        <div style="width: 100px;">
+          <label style="font-size: 13px; font-weight: 600;">Quantity: </label>
+          <input type="number" min="1" (change)="onQuantityChange()" [(ngModel)]="item.quantity" class="form-control mb-3" />
+        </div>
+      </div>
+      <div class="d-flex justify-content-center align-items-center col-3">
+        <button class="btn btn-danger" (click)="removeCartItem(i)"><i class="bi bi-dash-square"></i></button>
+      </div>
+
+      <hr class="mt-1">
+    </div>
+    <div class="d-flex justify-content-center">
+      <button class="btn btn-md btn-warning text-white" [disabled]="!products" [routerLink]="['/cart/checkout']">Checkout</button>
+    </div>
+  </div>
+</div>

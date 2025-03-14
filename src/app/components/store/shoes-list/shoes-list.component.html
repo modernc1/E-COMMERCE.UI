@@ -1,0 +1,119 @@
+<section>
+  <div id="main-container">
+    <div id="filters">
+      <div class="filter-section">
+        <!-- <button>Apply filters</button> -->
+        <h6>By Gender</h6>
+        <ul>
+          <li class="gender" *ngFor="let gender of genders">
+            <input class="me-1" type="checkbox" value="{{gender.id}}"
+            (click)="onCheckboxChange($event, gender.id)"
+            >{{gender.name}}
+          </li>
+        </ul>
+      </div>
+      <div class="filter-section">
+        <h6>By Category</h6>
+        <ul>
+          <li class="category" *ngFor="let category of categories">
+            <input class="me-1" type="checkbox" value="{{category.id}}"
+            (click)="onCheckboxChange($event, undefined, undefined, undefined, category.id)"
+            >{{category.name}}
+          </li>
+        </ul>
+      </div>
+      <div class="filter-section">
+        <h6>By Sizes</h6>
+        <ul class="row">
+          <li class="d-flex size col-3" *ngFor="let size of sizes">
+            <input class="me-1" type="checkbox" value="{{size.id}}"
+            (click)="onCheckboxChange($event, undefined, size.id)"
+            >{{size.name}}
+          </li>
+        </ul>
+      </div>
+      <div class="filter-section">
+        <h6>By Color</h6>
+        <ul class="overflow-y-scroll">
+          <li class="color" *ngFor="let color of colors">
+            <input class="me-1" type="checkbox" value="{{color.id}}"
+            (click)="onCheckboxChange($event, undefined, undefined, color.id)"
+            >{{color.name}}
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="shoes-list">
+      <div class="d-flex justify-content-between">
+        <div class="sort">
+
+        </div>
+
+        <div class="d-flex" role="search">
+          <input class="form-control me-2"
+          [(ngModel)]="filterRequest.filter"
+          name="filter"
+          (change)="onSearch()"
+          type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </div>
+
+      </div>
+      <ng-container *ngIf="notFoundMessage">
+        <div style="height: 400px; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+          <img height="300px" src="assets/images/NotFound.png" alt="">
+          <h4>{{notFoundMessage}}</h4>
+        </div>
+      </ng-container>
+      <div  style="height: 100%;">
+        <div id="card-container">
+          <div *ngFor="let product of products" class="product-card">
+            <div class="card-img-container">
+              <img src="{{product.mainImageUrl}}" alt="">
+            </div>
+            <div class="card-descrption">
+              <span>{{product.category.name}}</span>
+              <a [routerLink]="['/product-details', product.id]" routerLinkActive="router-link-active"  >{{product.name}}</a>
+              <div class="star">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+              </div>
+              <div class="d-flex">
+                <h4 class="old-price mt-2" *ngIf="product.productItems[0].originalPrice > product.productItems[0].salePrice">
+                  {{ product.productItems[0].originalPrice }} EGP
+                </h4>
+                <div *ngIf="product.productItems[0].originalPrice > product.productItems[0].salePrice" class="discount-badge">
+                  {{ getDiscountPercent(product.productItems[0].originalPrice, product.productItems[0].salePrice) }}% off
+                </div>
+              </div>
+              <h4 class="new-price">
+                {{ product.productItems[0].salePrice }} EGP
+              </h4>
+              <span class="stock">In-Stock</span>
+            </div>
+            <button class="btn" [routerLink]="['/product-details', product.id]"><i class="bi bi-card-list"></i></button>
+          </div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-center align-items-center">
+        <div class="pagination" style="height: 5%;">
+          <button id="previous" (click)="onSelectPage(currentPage - 1)"
+          [class.disabled]="currentPage === 1"
+          ><i class="bi bi-chevron-compact-left"></i> Previous</button>
+          <ul>
+            <li class="pagination-link"
+            [class.page-active]="currentPage === (page + 1)"
+            *ngFor="let page of getPages()" (click)="[onSelectPage(page + 1)]">{{page + 1}}</li>
+          </ul>
+          <button id="next"
+          [class.disabled]="currentPage === pages"
+          (click)="onSelectPage(currentPage+1)"
+          >Next <i class="bi bi-chevron-compact-right"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,90 @@
+<section>
+  <div class="container card mb-5">
+    <ng-container *ngIf="product">
+      <div class="row">
+        <div class="img-container col-lg-6">
+          <div class="image-list col-lg-2 d-flex flex-column">
+            <a *ngFor="let img of currentProductItem.imagesUrl"
+            (click)="onSelectImg(img)"
+            >
+            <img class="p-2"
+            src="{{img}}"
+            width="100px">
+            </a>
+          </div>
+          <div class="image-preview d-flex justify-content-center align-items-center">
+            <img src="{{selectedImg}}"
+            style="max-width: 100%; max-height: 480px;"
+            alt="">
+          </div>
+        </div>
+        <div class="product-details col-lg-6">
+          <h3>{{product.name}}</h3>
+          <div class="d-flex">
+            <p>(5.0)</p>
+            <div class="star">
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i>
+            </div>
+          </div>
+          <hr>
+
+          <div class="d-flex">
+            <h6>Price:</h6>
+            <div class="d-flex ms-1">
+              <h6 class="old-price" *ngIf="currentProductItem.originalPrice > currentProductItem.salePrice">
+                {{ currentProductItem.originalPrice }} EGP
+              </h6>
+              <h6 class="new-price ms-2">
+                {{ currentProductItem.salePrice }} EGP
+              </h6>
+
+              <div *ngIf="currentProductItem.originalPrice > currentProductItem.salePrice" class="discount-badge">
+                {{ getDiscountPercent(currentProductItem.originalPrice, currentProductItem.salePrice) }}% off
+              </div>
+
+            </div>
+          </div>
+
+          <div class="colors mb-4">
+            <h6>Available Colors</h6>
+            <div class="d-flex">
+              <!-- <img *ngFor="let productItem of product.productItems"
+              width="100px" src="{{productItem.imagesUrl[0]}}" alt=""> -->
+            <p *ngFor="let color of colors" [style.background-color]="color.hexCode"
+            (click)="onColorChange(color.id)"
+            > </p>
+            </div>
+          </div>
+          <div class="sizes row">
+            <div class="col-3">
+              <h6>Available Sizes</h6>
+              <select #SelectedSize class="form-control col-3">
+                <option disabled>Select Size</option>
+                <option *ngFor="let size of sizes" [value]="size.id">{{size.name}}</option>
+              </select>
+            </div>
+            <div class="col-3">
+              <h6>Quantity</h6>
+              <input type="number" name="quantity" [(ngModel)]="quantity" [ngModelOptions]="{standalone: true}" class="form-control"/>
+            </div>
+
+          </div>
+          <div class="descriptions mt-4">
+            <h6>Description</h6>
+            <hr class="mt-2">
+            <p style="font-size: 14px; color: darkslategray;">{{product.description}}</p>
+            <div class="d-flex mt-3 me-5 justify-content-end col-12">
+              <button id="add-to-cart-button" class="btn btn-warning"
+              (click)="AddToCart(currentProductItem, SelectedSize.value, quantity)"
+              >Add To Cart <i class="bi bi-cart-fill"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</section>

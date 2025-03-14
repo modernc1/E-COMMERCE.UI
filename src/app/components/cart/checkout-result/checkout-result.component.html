@@ -1,0 +1,30 @@
+<div class="container py-5">
+  <div class="card">
+    <div class="card-body text-center">
+      <h3 [ngClass]="paymentStatus === 'CAPTURED'? 'alert-success' : 'alert-danger' "
+      class="alert">{{paymentStatus}}</h3>
+    </div>
+    <div class="card-body">
+      <div class="invoice-details">
+        <div *ngFor="let item of checkoutDetails" class="row">
+          <div class="col-8">
+            <h6>{{item.product.name}} X {{item.quantity}}</h6>
+            <p>original price: {{item.product.productItem.originalPrice}} EGP</p>
+            <p>sale Price: {{item.product.productItem.salePrice}} EGP</p>
+          </div>
+          <div class="col-4 d-flex justify-content-start align-items-end">
+            <p style="font-size: 14px;">total: {{item.product.productItem.salePrice  * item.quantity}}</p>
+          </div>
+          <hr>
+        </div>
+      </div>
+      <div class="total-price row">
+        <h5 class="col-8">Total Amount:</h5>
+        <h5 class="col-4">{{countTotalPrice()}}EGP</h5>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center mb-5">
+      <button [routerLink]="['/shoes-list']"  class="btn btn-warning text-white">Continue Shopping</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,111 @@
+<div class="container py-5 d-flex justify-content-center">
+  <div class="card" style="width: 600px;">
+    <div class="card-header text-center pt-3">
+      <h3>Sign Up !</h3>
+    </div>
+    <div class="card-body px-5">
+      <ng-container  *ngIf="backendError">
+        <div class="w-100 alert alert-danger">
+          <h6 class="">• {{backendError}}</h6>
+        </div>
+      </ng-container>
+
+      <form #registerForm="ngForm">
+        <div class="row">
+          <div class="col-6 mb-3">
+            <label for="firstName" class="form-label">First name</label>
+            <input
+            type="text" class="form-control"
+            name="firstName"
+            [(ngModel)]="firstName"
+            #firstNameIn="ngModel"
+            required
+            minlength="3"
+            >
+            <app-error-component [controlModel]="firstNameIn"></app-error-component>
+          </div>
+          <div class="col-6 mb-3">
+            <label for="lastName" class="form-label">Last name</label>
+            <input
+            type="text" class="form-control"
+            name="lastName"
+            [(ngModel)]="lastName"
+            #lastNameIn="ngModel"
+            required
+            minlength="3"
+            >
+            <app-error-component [controlModel]="lastNameIn"></app-error-component>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email address</label>
+          <input
+          type="email" class="form-control"
+          aria-describedby="emailHelp"
+          name="email"
+          [(ngModel)]="model.email"
+          #email="ngModel"
+          required
+          email
+          >
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          <app-error-component [controlModel]="email" [customErrors]="{ email: 'Please enter a valid email address.' }"></app-error-component>
+        </div>
+        <div class="input-group mb-3">
+          <label for="password" class="form-label w-100">Password</label>
+          <input [type]="showPassword? 'text' : 'password'" class="form-control"
+          name="password"
+          [(ngModel)]="model.password"
+          #password="ngModel"
+          required
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d!@#$%^&*]{8,}$"
+          style="border-top-left-radius: 6px; border-bottom-left-radius: 6px;">
+          <button type="button" class="btn btn-outline-secondary"
+          (click)="togglePassword('password')"
+          style="border-top-right-radius: 5px; border-bottom-right-radius: 5px;">
+            {{ showPassword ? 'Hide' : 'Show' }}
+          </button>
+          <div *ngIf="password?.invalid && password?.touched" class="text-red-500 w-100">
+            <div *ngIf="password?.errors?.['required']">
+              <span style="font-size: 12px; color: red;">• Password is required.</span>
+            </div>
+            <div *ngIf="password?.errors?.['minlength']">
+              <span style="font-size: 12px; color: red;">• Must be at least 8 characters long.</span>
+            </div>
+            <div *ngIf="password?.errors?.['pattern']">
+              <span style="font-size: 12px; color: red;">
+              • Must contain at least one uppercase letter.<br>
+              • Must contain at least one lowercase letter.<br>
+              • Must contain at least one number.
+            </span>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">Confirm password</label>
+          <input type="password" class="form-control"
+          name="confirmPassword"
+          [(ngModel)]="model.confirmPassword"
+          #confirmPassword="ngModel"
+          required
+          pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+          >
+          <div *ngIf="confirmPasswordError && confirmPassword.touched" class="text-red-500">
+            <span style="font-size: 12px; color: red;">• Passwords do not match.</span>
+          </div>
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="keepMeSignedIn"
+          >
+          <label class="form-check-label" for="exampleCheck1">Agreed to <a href="">Privacy Policy</a></label>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-warning w-100 text-white my-4"
+          [disabled]="registerForm.invalid || confirmPasswordError"
+          (click)="onFormSubmit()"
+          >Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

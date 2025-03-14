@@ -1,0 +1,76 @@
+<!-- <p-menubar [model]="items">
+  <ng-template #start>
+      <svg width="33" height="35" viewBox="0 0 33 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="..." fill="var(--primary-color)" />
+      </svg>
+  </ng-template>
+  <ng-template #item let-item let-root="root">
+      <a pRipple class="flex items-center p-menubar-item-link">
+        <span><i class="{{item.icon}}"></i></span>
+        <span>{{ item.label }}</span>
+          <p-badge *ngIf="item.badge" severity="contrast" [ngClass]="{ 'ml-auto': !root, 'ml-2': root }" [value]="item.badge" />
+          <span *ngIf="item.shortcut" class="ml-auto border border-surface rounded bg-emphasis text-muted-color text-xs p-1">{{ item.shortcut }}</span>
+          <i *ngIf="item.items" [ngClass]="['ml-auto pi', root ? 'pi-angle-down' : 'pi-angle-right']"></i>
+      </a>
+  </ng-template>
+  <ng-template #end>
+      <div class="d-flex justify-content-center align-items-center gap-2">
+          <input type="text" pInputText placeholder="Search" class="w-36" />
+          <p-avatar image="" shape="circle" />
+      </div>
+  </ng-template>
+</p-menubar> -->
+  <!-- <p-megamenu [model]="megaItems" /> -->
+<section id="navbar">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+      <p class="navbar-brand" href="#"><img src="assets/images/logo.png" alt="">
+      <a class="navbar-brand">SoLuxe</a>
+      </p>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/home" routerLinkActive="active" >Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/shoes-list" routerLinkActive="active" >Shoes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/cart" routerLinkActive="active" ><i class="bi bi-bag-fill"></i> ({{cartItemsNumber}})</a>
+          </li>
+          <ng-container *ngIf="!isAuthenticated; else signOut">
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['auth/register']" routerLinkActive="active"  aria-disabled="true">Sign Up</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['auth/login']" routerLinkActive="active"  aria-disabled="true">Login</a>
+            </li>
+          </ng-container>
+          <ng-template #signOut>
+            <ng-container *ngIf="isAdmin">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Management
+                </a>
+                <ul class="dropdown-menu" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                  <li><a class="dropdown-item" [routerLink]="['/admin/categories']" routerLinkActive="active">Categories</a></li>
+                  <li><a class="dropdown-item" [routerLink]="['/admin/products']" routerLinkActive="active" >products</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+              </li>
+            </ng-container>
+            <li class="nav-item">
+              <a class="nav-link" style="cursor: pointer;" (click)="SignOut()" aria-disabled="true">Sign Out</a>
+            </li>
+          </ng-template>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+</section>
+

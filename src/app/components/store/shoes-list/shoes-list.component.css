@@ -1,0 +1,302 @@
+#main-container{
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+  margin: 50px 0;
+}
+
+#filters{
+  grid-column: span 2;
+  position: relative;
+  height: fit-content;
+  padding: 20px 10px;
+  overflow-y: scroll;
+}
+
+#filters, #shoes-list{
+  border: 1px solid #e2e2e2;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.03);
+}
+
+/* #filters button{
+  position: absolute;
+  border: none;
+  border-radius: 5px;
+  top: 10px;
+  right: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+  background-color: #272727;
+} */
+
+
+#filters .filter-section{
+  margin: 10px 0;
+}
+
+#filters .filter-section h6{
+  font-size: 15px;
+  font-weight: 800;
+  color: #505050;
+}
+
+#filters .filter-section ul{
+  text-decoration: none;
+  list-style: none;
+}
+
+#filters .filter-section ul li{
+  font-size: 13px;
+  font-weight: 600;
+  margin: 3px 0;
+  display: flex;
+}
+
+
+#shoes-list {
+  grid-column: span 4;
+  text-align: center;
+  background-color: #f1f1f1;
+  padding: 30px 0;
+}
+
+#card-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding: 0 20px;
+}
+
+#shoes-list h2{
+  font-size: 60px;
+  letter-spacing: 5px;
+  background: linear-gradient(to right, #FF5733, #FFC300);
+  background-clip: text;  /* Clip background to text */
+  -webkit-text-fill-color: transparent;
+}
+
+#shoes-list .product-card{
+  width: 230px;
+  height: 330px;
+  padding: 10px 20px;
+  background-color: #FAFAFA;
+  border: 1px solid rgb(229, 229, 229);
+  cursor: pointer;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.03);
+  border-radius: 10px;
+  margin: 15px 15px;
+  transition: 0.3s ease-in-out;
+  position: relative;
+  text-align: center;
+
+}
+
+
+#shoes-list .product-card:hover{
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.07);
+  transform: scale(1.02);
+}
+
+#shoes-list .product-card img {
+  max-width: 100%;
+  max-height: 150px;
+  border-radius: 10px;
+}
+
+#shoes-list .product-card .card-descrption {
+  text-align: start;
+  padding: 3px 0;
+}
+
+#shoes-list .product-card .card-descrption span{
+  color: #606063;
+  font-size: 12px;
+}
+#shoes-list .product-card .card-descrption a{
+  display: block;
+  text-decoration: none;
+  padding-top: 1px;
+  color: #1a1a1a;
+  max-height: 25px;
+  overflow-y: hidden;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+#shoes-list .product-card .card-descrption a:hover{
+  text-decoration: underline;
+}
+#shoes-list .product-card .card-descrption i{
+  padding: 2px 0;
+  margin: 0 3px;
+  font-size: 15px;
+  color: #FFD700;
+}
+
+#shoes-list .product-card .card-descrption .stock{
+  padding: 3px 10px;
+  color: white;
+  background: #28A745; /* Sporty Green */
+  border-radius: 5px;
+  font-weight: 700;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+#shoes-list .product-card button{
+  font-size: 25px;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+  background-color: #0a0706;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  transition: 0.4s ease;
+}
+
+#shoes-list .product-card button:hover{
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.03);
+  background-color: #ffb52d;
+  transform: scale(1.04);
+}
+
+.card-img-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 150px;
+  background-color: white;
+}
+
+.discount-badge {
+  background-image: linear-gradient(to right, #ff542d , #ffe100 );
+  opacity: 90%;
+  padding: 0 5px;
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-bottom: auto;
+  margin-top: 6px;
+  margin-left: 10px;
+}
+
+.old-price {
+  text-decoration: line-through;
+  color: #888;
+  font-size: 12px;
+  padding: 0px;
+}
+
+
+.new-price {
+  font-size: 14px;
+  position: absolute;
+  bottom: 25px;
+  font-weight: bold;
+  color:#ff2f00;
+}
+
+.pagination{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0;
+  align-items: center;
+  background-color:#fdfdfd;
+  border-radius: 10px;
+}
+
+.pagination ul {
+  list-style-type: none;
+  padding: 3px 5px;
+  margin: 0;
+}
+
+.pagination ul li {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 25px;
+  cursor: pointer;
+}
+
+.pagination #previous, .pagination #next{
+  display: inline-flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 500;
+  color: #383838;
+  background: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+#next{
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#previous{
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px ;
+}
+
+.pagination #previous.disabled,
+ .pagination #next.disabled{
+  background: #96969a;
+  color: whitesmoke;
+  pointer-events: none; /*prevent clicks */
+}
+
+ul li.page-active{
+  color: white !important;
+  background-image: linear-gradient(45deg, #ffc774, #ff8800) !important;
+}
+
+@media (max-width: 880px) {
+
+  #shoes-list{
+    grid-column: span 4;
+  }
+  #filters{
+    grid-column: span 2;
+  }
+  #card-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (min-width: 881px) and (max-width: 1020px) {
+  #main-container{
+    grid-template-columns: repeat(4, 1fr);
+  }
+  #shoes-list{
+    grid-column: span 3;
+  }
+  #filters{
+    grid-column: span 1;
+  }
+}
+
+@media (min-width: 1021px) {
+  #main-container{
+    grid-template-columns: repeat(5, 1fr);
+  }
+  #shoes-list{
+    grid-column: span 4;
+  }
+  #filters{
+    grid-column: span 1;
+  }
+}
