@@ -15,11 +15,12 @@ export const authGuard: CanActivateFn = (route, state) => {
       return true
     }
     else{
-      alert('UnAuthorize 401')
-      return router.navigate(['/login']);
+      return router.createUrlTree(['/login'], {queryParams: {returnUrl: state.url}})
     }
-  }else{
-    authService.signOut()
-    return router.navigate(['/login'], {queryParams: {returnUrl : state.url}})
   }
+  else{
+    authService.signOut()
+    return router.createUrlTree(['/login'], {queryParams: {returnUrl: state.url}});
+  }
+  
 };

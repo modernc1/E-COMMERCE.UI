@@ -50,7 +50,7 @@ export class RegisterComponent implements OnDestroy {
     this.model.fullName = this.firstName + ' ' + this.lastName
     const sb1 = this.authService.registerNewUser(this.model).subscribe({
       next: response => {
-        const sb2 = this.authService.loginUser(this.model).subscribe({
+        const sb2 = this.authService.loginUser({email: this.model.email, password: this.model.password}).subscribe({
               next: response => {
                 if(response.success){
                   localStorage.setItem('token', response.token!)
