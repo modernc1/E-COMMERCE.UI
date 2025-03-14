@@ -1,5 +1,81 @@
 # ECommerceUI
 
+# Shoe Store Frontend
+
+Welcome to the **Shoe Store** frontend repository! This project is built using **Angular 18** and serves as the user interface for an e-commerce platform dedicated to selling shoes. The backend for this project is developed using **ASP.NET Core**, which handles business logic and data management.
+
+## Features
+
+- Browse a variety of shoes with filtering and sorting options.
+- View detailed product pages with available sizes and stock information.
+- Add items to the cart and proceed to checkout.
+- User authentication and order management.
+- Responsive design for a seamless experience on different devices.
+
+## Tech Stack
+
+- **Frontend:** Angular 19, TypeScript, HTML, SCSS
+- **Backend:** [ASP.NET Core Backend Repository](https://github.com/modernc1/Shoes-Store.API)
+- **State Management:** NgRx (if applicable)
+- **UI Framework:** Angular Material / Bootstrap (if used)
+
+## Getting Started
+
+### Prerequisites
+
+Ensure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (LTS version recommended)
+- [Angular CLI](https://angular.io/cli)
+
+### Installation
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/shoe-store-frontend.git
+   cd shoe-store-frontend
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+3. Configure the environment variables (if applicable).
+
+### Running the Application
+
+To start the development server, run:
+```sh
+ng serve
+```
+Then, navigate to `http://localhost:4200/` in your browser.
+
+## API Integration
+
+This frontend application communicates with the backend through a REST API. Ensure the backend is running before testing full functionality.
+
+Backend Repository: [Shoe Store Backend](https://github.com/modernc1/Shoes-Store.API)
+
+## Deployment
+
+To build the project for production:
+```sh
+ng build --configuration=production
+```
+This will generate the optimized files in the `dist/` folder.
+
+## Contributing
+
+Contributions are welcome! Feel free to open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the MIT License.
+
+---
+
+Feel free to update the links, dependencies, or any specific configurations based on your project setup.
+
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.7.
 
 ## Development server
