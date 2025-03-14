@@ -13,7 +13,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "doc",
+            "outputPath": {
+              "base": "docs",
+              "browser": ""
+            },
+            "ssr": false,
+            "outputMode": "static",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
