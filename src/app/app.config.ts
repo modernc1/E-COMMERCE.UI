@@ -10,6 +10,8 @@ import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptors, withInterceptor
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { AuthInterceptor } from './Interceptors/auth.interceptor';
 import { RefreshTokenInterceptor } from './Interceptors/refresh-token.interceptor';
+import Aura from '@primeng/themes/aura';
+
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
@@ -18,7 +20,11 @@ export const appConfig: ApplicationConfig = {
       {provide: HTTP_INTERCEPTORS, useClass: RefreshTokenInterceptor, multi: true},
     provideRouter(routes),
     provideAnimationsAsync(),
-    providePrimeNG(),
+        providePrimeNG({
+            theme: {
+                preset: Aura
+            }
+        }),
     MessageService,
     ConfirmationService
   ]
